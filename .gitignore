@@ -49,3 +49,10 @@ docker/database/data/
 *.tmp
 .DS_Store
 .vscode/settings.json
+
+# ROS2 build artifacts dentro del paquete
+**/build/
+**/install/
+**/log/
+**/__pycache__/
+**/*.pyc
