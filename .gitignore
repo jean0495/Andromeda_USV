@@ -1,0 +1,51 @@
+# ===========================
+# ROS2 / middleware_ws
+# ===========================
+middleware_ws/build/
+middleware_ws/install/
+middleware_ws/log/
+middleware_ws/**/__pycache__/
+middleware_ws/**/*.pyc
+middleware_ws/**/*.pyo
+
+# ===========================
+# andromeda_python
+# ===========================
+andromeda_python/__pycache__/
+andromeda_python/**/__pycache__/
+andromeda_python/**/*.pyc
+andromeda_python/**/*.egg-info/
+andromeda_python/dist/
+andromeda_python/.eggs/
+
+# ===========================
+# external_services / backend
+# ===========================
+external_services/backend_api/__pycache__/
+external_services/backend_api/**/__pycache__/
+external_services/backend_api/**/*.pyc
+external_services/backend_api/.env
+
+# ===========================
+# external_services / frontend
+# ===========================
+external_services/frontend/dashboard/node_modules/
+external_services/frontend/dashboard/dist/
+external_services/frontend/dashboard/.env
+external_services/frontend/dashboard/.env.local
+
+# ===========================
+# Docker
+# ===========================
+docker/**/.env
+docker/database/data/
+
+# ===========================
+# General
+# ===========================
+.env
+.env.*
+*.log
+*.tmp
+.DS_Store
+.vscode/settings.json
