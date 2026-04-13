@@ -1,0 +1,73 @@
+[0.445s] Invoking command in '/home/jean/Andromeda_USV/andromeda_project/middleware_ws/src/andromeda_middleware': PYTHONPATH=/home/jean/Andromeda_USV/andromeda_project/middleware_ws/src/build/andromeda_middleare/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/jean/Andromeda_USV/andromeda_project/middleware_ws/src/install/andromeda_middleare/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../build/andromeda_middleare build --build-base /home/jean/Andromeda_USV/andromeda_project/middleware_ws/src/build/andromeda_middleare/build install --record /home/jean/Andromeda_USV/andromeda_project/middleware_ws/src/build/andromeda_middleare/install.log --single-version-externally-managed install_data
+[0.599s] running egg_info
+[0.599s] creating ../build/andromeda_middleare/andromeda_middleare.egg-info
+[0.599s] writing ../build/andromeda_middleare/andromeda_middleare.egg-info/PKG-INFO
+[0.599s] writing dependency_links to ../build/andromeda_middleare/andromeda_middleare.egg-info/dependency_links.txt
+[0.599s] writing entry points to ../build/andromeda_middleare/andromeda_middleare.egg-info/entry_points.txt
+[0.599s] writing requirements to ../build/andromeda_middleare/andromeda_middleare.egg-info/requires.txt
+[0.599s] writing top-level names to ../build/andromeda_middleare/andromeda_middleare.egg-info/top_level.txt
+[0.599s] writing manifest file '../build/andromeda_middleare/andromeda_middleare.egg-info/SOURCES.txt'
+[0.600s] reading manifest file '../build/andromeda_middleare/andromeda_middleare.egg-info/SOURCES.txt'
+[0.601s] writing manifest file '../build/andromeda_middleare/andromeda_middleare.egg-info/SOURCES.txt'
+[0.601s] running build
+[0.601s] running build_py
+[0.601s] creating /home/jean/Andromeda_USV/andromeda_project/middleware_ws/src/build/andromeda_middleare/build
+[0.601s] creating /home/jean/Andromeda_USV/andromeda_project/middleware_ws/src/build/andromeda_middleare/build/lib
+[0.601s] creating /home/jean/Andromeda_USV/andromeda_project/middleware_ws/src/build/andromeda_middleare/build/lib/andromeda_middleware
+[0.601s] copying andromeda_middleware/__init__.py -> /home/jean/Andromeda_USV/andromeda_project/middleware_ws/src/build/andromeda_middleare/build/lib/andromeda_middleware
+[0.601s] creating /home/jean/Andromeda_USV/andromeda_project/middleware_ws/src/build/andromeda_middleare/build/lib/andromeda_middleware/nodes
+[0.601s] copying andromeda_middleware/nodes/__init__.py -> /home/jean/Andromeda_USV/andromeda_project/middleware_ws/src/build/andromeda_middleare/build/lib/andromeda_middleware/nodes
+[0.604s] creating /home/jean/Andromeda_USV/andromeda_project/middleware_ws/src/build/andromeda_middleare/build/lib/andromeda_middleware/infrastructure
+[0.604s] copying andromeda_middleware/infrastructure/__init__.py -> /home/jean/Andromeda_USV/andromeda_project/middleware_ws/src/build/andromeda_middleare/build/lib/andromeda_middleware/infrastructure
+[0.604s] creating /home/jean/Andromeda_USV/andromeda_project/middleware_ws/src/build/andromeda_middleare/build/lib/andromeda_middleware/services
+[0.604s] copying andromeda_middleware/services/__init__.py -> /home/jean/Andromeda_USV/andromeda_project/middleware_ws/src/build/andromeda_middleare/build/lib/andromeda_middleware/services
+[0.604s] creating /home/jean/Andromeda_USV/andromeda_project/middleware_ws/src/build/andromeda_middleare/build/lib/andromeda_middleware/infrastructure/mqtt
+[0.604s] copying andromeda_middleware/infrastructure/mqtt/__init__.py -> /home/jean/Andromeda_USV/andromeda_project/middleware_ws/src/build/andromeda_middleare/build/lib/andromeda_middleware/infrastructure/mqtt
+[0.604s] creating /home/jean/Andromeda_USV/andromeda_project/middleware_ws/src/build/andromeda_middleare/build/lib/andromeda_middleware/infrastructure/camera
+[0.604s] copying andromeda_middleware/infrastructure/camera/__init__.py -> /home/jean/Andromeda_USV/andromeda_project/middleware_ws/src/build/andromeda_middleare/build/lib/andromeda_middleware/infrastructure/camera
+[0.605s] creating /home/jean/Andromeda_USV/andromeda_project/middleware_ws/src/build/andromeda_middleare/build/lib/andromeda_middleware/infrastructure/mavlink
+[0.605s] copying andromeda_middleware/infrastructure/mavlink/__init__.py -> /home/jean/Andromeda_USV/andromeda_project/middleware_ws/src/build/andromeda_middleare/build/lib/andromeda_middleware/infrastructure/mavlink
+[0.605s] creating /home/jean/Andromeda_USV/andromeda_project/middleware_ws/src/build/andromeda_middleare/build/lib/andromeda_middleware/infrastructure/database
+[0.605s] copying andromeda_middleware/infrastructure/database/__init__.py -> /home/jean/Andromeda_USV/andromeda_project/middleware_ws/src/build/andromeda_middleare/build/lib/andromeda_middleware/infrastructure/database
+[0.605s] creating /home/jean/Andromeda_USV/andromeda_project/middleware_ws/src/build/andromeda_middleare/build/lib/andromeda_middleware/infrastructure/serial
+[0.605s] copying andromeda_middleware/infrastructure/serial/__init__.py -> /home/jean/Andromeda_USV/andromeda_project/middleware_ws/src/build/andromeda_middleare/build/lib/andromeda_middleware/infrastructure/serial
+[0.605s] running install
+[0.605s] running install_lib
+[0.605s] creating /home/jean/Andromeda_USV/andromeda_project/middleware_ws/src/install/andromeda_middleare/lib/python3.10/site-packages/andromeda_middleware
+[0.605s] creating /home/jean/Andromeda_USV/andromeda_project/middleware_ws/src/install/andromeda_middleare/lib/python3.10/site-packages/andromeda_middleware/nodes
+[0.605s] copying /home/jean/Andromeda_USV/andromeda_project/middleware_ws/src/build/andromeda_middleare/build/lib/andromeda_middleware/nodes/__init__.py -> /home/jean/Andromeda_USV/andromeda_project/middleware_ws/src/install/andromeda_middleare/lib/python3.10/site-packages/andromeda_middleware/nodes
+[0.605s] creating /home/jean/Andromeda_USV/andromeda_project/middleware_ws/src/install/andromeda_middleare/lib/python3.10/site-packages/andromeda_middleware/infrastructure
+[0.606s] creating /home/jean/Andromeda_USV/andromeda_project/middleware_ws/src/install/andromeda_middleare/lib/python3.10/site-packages/andromeda_middleware/infrastructure/mqtt
+[0.606s] copying /home/jean/Andromeda_USV/andromeda_project/middleware_ws/src/build/andromeda_middleare/build/lib/andromeda_middleware/infrastructure/mqtt/__init__.py -> /home/jean/Andromeda_USV/andromeda_project/middleware_ws/src/install/andromeda_middleare/lib/python3.10/site-packages/andromeda_middleware/infrastructure/mqtt
+[0.606s] creating /home/jean/Andromeda_USV/andromeda_project/middleware_ws/src/install/andromeda_middleare/lib/python3.10/site-packages/andromeda_middleware/infrastructure/camera
+[0.606s] copying /home/jean/Andromeda_USV/andromeda_project/middleware_ws/src/build/andromeda_middleare/build/lib/andromeda_middleware/infrastructure/camera/__init__.py -> /home/jean/Andromeda_USV/andromeda_project/middleware_ws/src/install/andromeda_middleare/lib/python3.10/site-packages/andromeda_middleware/infrastructure/camera
+[0.606s] copying /home/jean/Andromeda_USV/andromeda_project/middleware_ws/src/build/andromeda_middleare/build/lib/andromeda_middleware/infrastructure/__init__.py -> /home/jean/Andromeda_USV/andromeda_project/middleware_ws/src/install/andromeda_middleare/lib/python3.10/site-packages/andromeda_middleware/infrastructure
+[0.606s] creating /home/jean/Andromeda_USV/andromeda_project/middleware_ws/src/install/andromeda_middleare/lib/python3.10/site-packages/andromeda_middleware/infrastructure/mavlink
+[0.606s] copying /home/jean/Andromeda_USV/andromeda_project/middleware_ws/src/build/andromeda_middleare/build/lib/andromeda_middleware/infrastructure/mavlink/__init__.py -> /home/jean/Andromeda_USV/andromeda_project/middleware_ws/src/install/andromeda_middleare/lib/python3.10/site-packages/andromeda_middleware/infrastructure/mavlink
+[0.606s] creating /home/jean/Andromeda_USV/andromeda_project/middleware_ws/src/install/andromeda_middleare/lib/python3.10/site-packages/andromeda_middleware/infrastructure/database
+[0.606s] copying /home/jean/Andromeda_USV/andromeda_project/middleware_ws/src/build/andromeda_middleare/build/lib/andromeda_middleware/infrastructure/database/__init__.py -> /home/jean/Andromeda_USV/andromeda_project/middleware_ws/src/install/andromeda_middleare/lib/python3.10/site-packages/andromeda_middleware/infrastructure/database
+[0.606s] creating /home/jean/Andromeda_USV/andromeda_project/middleware_ws/src/install/andromeda_middleare/lib/python3.10/site-packages/andromeda_middleware/infrastructure/serial
+[0.606s] copying /home/jean/Andromeda_USV/andromeda_project/middleware_ws/src/build/andromeda_middleare/build/lib/andromeda_middleware/infrastructure/serial/__init__.py -> /home/jean/Andromeda_USV/andromeda_project/middleware_ws/src/install/andromeda_middleare/lib/python3.10/site-packages/andromeda_middleware/infrastructure/serial
+[0.606s] copying /home/jean/Andromeda_USV/andromeda_project/middleware_ws/src/build/andromeda_middleare/build/lib/andromeda_middleware/__init__.py -> /home/jean/Andromeda_USV/andromeda_project/middleware_ws/src/install/andromeda_middleare/lib/python3.10/site-packages/andromeda_middleware
+[0.606s] creating /home/jean/Andromeda_USV/andromeda_project/middleware_ws/src/install/andromeda_middleare/lib/python3.10/site-packages/andromeda_middleware/services
+[0.606s] copying /home/jean/Andromeda_USV/andromeda_project/middleware_ws/src/build/andromeda_middleare/build/lib/andromeda_middleware/services/__init__.py -> /home/jean/Andromeda_USV/andromeda_project/middleware_ws/src/install/andromeda_middleare/lib/python3.10/site-packages/andromeda_middleware/services
+[0.606s] byte-compiling /home/jean/Andromeda_USV/andromeda_project/middleware_ws/src/install/andromeda_middleare/lib/python3.10/site-packages/andromeda_middleware/nodes/__init__.py to __init__.cpython-310.pyc
+[0.607s] byte-compiling /home/jean/Andromeda_USV/andromeda_project/middleware_ws/src/install/andromeda_middleare/lib/python3.10/site-packages/andromeda_middleware/infrastructure/mqtt/__init__.py to __init__.cpython-310.pyc
+[0.607s] byte-compiling /home/jean/Andromeda_USV/andromeda_project/middleware_ws/src/install/andromeda_middleare/lib/python3.10/site-packages/andromeda_middleware/infrastructure/camera/__init__.py to __init__.cpython-310.pyc
+[0.607s] byte-compiling /home/jean/Andromeda_USV/andromeda_project/middleware_ws/src/install/andromeda_middleare/lib/python3.10/site-packages/andromeda_middleware/infrastructure/__init__.py to __init__.cpython-310.pyc
+[0.607s] byte-compiling /home/jean/Andromeda_USV/andromeda_project/middleware_ws/src/install/andromeda_middleare/lib/python3.10/site-packages/andromeda_middleware/infrastructure/mavlink/__init__.py to __init__.cpython-310.pyc
+[0.607s] byte-compiling /home/jean/Andromeda_USV/andromeda_project/middleware_ws/src/install/andromeda_middleare/lib/python3.10/site-packages/andromeda_middleware/infrastructure/database/__init__.py to __init__.cpython-310.pyc
+[0.607s] byte-compiling /home/jean/Andromeda_USV/andromeda_project/middleware_ws/src/install/andromeda_middleare/lib/python3.10/site-packages/andromeda_middleware/infrastructure/serial/__init__.py to __init__.cpython-310.pyc
+[0.607s] byte-compiling /home/jean/Andromeda_USV/andromeda_project/middleware_ws/src/install/andromeda_middleare/lib/python3.10/site-packages/andromeda_middleware/__init__.py to __init__.cpython-310.pyc
+[0.607s] byte-compiling /home/jean/Andromeda_USV/andromeda_project/middleware_ws/src/install/andromeda_middleare/lib/python3.10/site-packages/andromeda_middleware/services/__init__.py to __init__.cpython-310.pyc
+[0.607s] running install_data
+[0.607s] creating /home/jean/Andromeda_USV/andromeda_project/middleware_ws/src/install/andromeda_middleare/share/ament_index
+[0.607s] creating /home/jean/Andromeda_USV/andromeda_project/middleware_ws/src/install/andromeda_middleare/share/ament_index/resource_index
+[0.607s] creating /home/jean/Andromeda_USV/andromeda_project/middleware_ws/src/install/andromeda_middleare/share/ament_index/resource_index/packages
+[0.607s] copying resource/andromeda_middleare -> /home/jean/Andromeda_USV/andromeda_project/middleware_ws/src/install/andromeda_middleare/share/ament_index/resource_index/packages
+[0.607s] copying package.xml -> /home/jean/Andromeda_USV/andromeda_project/middleware_ws/src/install/andromeda_middleare/share/andromeda_middleare
+[0.607s] running install_egg_info
+[0.607s] Copying ../build/andromeda_middleare/andromeda_middleare.egg-info to /home/jean/Andromeda_USV/andromeda_project/middleware_ws/src/install/andromeda_middleare/lib/python3.10/site-packages/andromeda_middleare-0.0.0-py3.10.egg-info
+[0.608s] running install_scripts
+[0.620s] writing list of installed files to '/home/jean/Andromeda_USV/andromeda_project/middleware_ws/src/build/andromeda_middleare/install.log'
+[0.638s] Invoked command in '/home/jean/Andromeda_USV/andromeda_project/middleware_ws/src/andromeda_middleware' returned '0': PYTHONPATH=/home/jean/Andromeda_USV/andromeda_project/middleware_ws/src/build/andromeda_middleare/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/jean/Andromeda_USV/andromeda_project/middleware_ws/src/install/andromeda_middleare/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../build/andromeda_middleare build --build-base /home/jean/Andromeda_USV/andromeda_project/middleware_ws/src/build/andromeda_middleare/build install --record /home/jean/Andromeda_USV/andromeda_project/middleware_ws/src/build/andromeda_middleare/install.log --single-version-externally-managed install_data

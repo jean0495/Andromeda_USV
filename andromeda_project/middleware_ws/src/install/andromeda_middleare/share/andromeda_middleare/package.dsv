@@ -1,0 +1,6 @@
+source;share/andromeda_middleare/hook/pythonpath.ps1
+source;share/andromeda_middleare/hook/pythonpath.dsv
+source;share/andromeda_middleare/hook/pythonpath.sh
+source;share/andromeda_middleare/hook/ament_prefix_path.ps1
+source;share/andromeda_middleare/hook/ament_prefix_path.dsv
+source;share/andromeda_middleare/hook/ament_prefix_path.sh
