@@ -1,9 +1,12 @@
 # ===========================
 # ROS2 / middleware_ws
 # ===========================
-middleware_ws/build/
-middleware_ws/install/
-middleware_ws/log/
+# ===========================
+# ROS2 / middleware_ws
+# ===========================
+middleware_ws/src/build/
+middleware_ws/src/install/
+middleware_ws/src/log/
 middleware_ws/**/__pycache__/
 middleware_ws/**/*.pyc
 middleware_ws/**/*.pyo
@@ -49,3 +52,10 @@ docker/database/data/
 *.tmp
 .DS_Store
 .vscode/settings.json
+
+# ROS2 build artifacts dentro del paquete
+**/build/
+**/install/
+**/log/
+**/__pycache__/
+**/*.pyc

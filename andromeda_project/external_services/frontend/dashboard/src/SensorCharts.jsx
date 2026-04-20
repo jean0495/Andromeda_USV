@@ -1,18 +1,23 @@
 import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer } from 'recharts'
-import { useState, useEffect } from 'react'
+import { useRef, useEffect, useState } from 'react'
 
-const generate = () => Array.from({ length: 20 }, (_, i) => ({
-  t: `${i}s`,
-  temperatura: +(20 + Math.random() * 5).toFixed(1),
-  ph: +(7 + Math.random()).toFixed(2),
-  turbidez: +(10 + Math.random() * 5).toFixed(1),
-}))
+const MAX_POINTS = 30
 
 const SENSORS = [
-  { key: 'temperatura', label: 'Temperatura', unit: '°C',  color: '#f97316', icon: '🌡' },
-  { key: 'ph',          label: 'pH',           unit: '',    color: '#6c63ff', icon: '⚗' },
-  { key: 'turbidez',    label: 'Turbidez',     unit: 'NTU', color: '#a855f7', icon: '💧' },
+  { key: 'temp',  label: 'Temperatura', unit: '°C',  color: '#f97316', icon: '🌡' },
+  { key: 'ph',    label: 'pH',          unit: '',    color: '#6c63ff', icon: '⚗' },
+  { key: 'turb',  label: 'Turbidez',    unit: 'NTU', color: '#a855f7', icon: '💧' },
 ]
+
+function parseSensorData(raw) {
+  if (!raw) return null
+  try {
+    const matches = raw.matchAll(/(\w+)=([\d.]+)/g)
+    return Object.fromEntries([...matches].map(m => [m[1], parseFloat(m[2])]))
+  } catch {
+    return null
+  }
+}
 
 const CustomTooltip = ({ active, payload, label, unit, color }) => {
   if (!active || !payload?.length) return null
@@ -24,18 +29,36 @@ const CustomTooltip = ({ active, payload, label, unit, color }) => {
   )
 }
 
-export default function SensorCharts() {
-  const [data, setData] = useState(generate)
+export default function SensorCharts({ data }) {
+  const [history, setHistory] = useState([])
+  const tickRef = useRef(0)
+
   useEffect(() => {
-    const id = setInterval(() => setData(generate()), 2000)
-    return () => clearInterval(id)
-  }, [])
+    const parsed = parseSensorData(data)
+    if (!parsed) return
+
+    tickRef.current += 1
+    const point = {
+      t: `${tickRef.current}s`,
+      ...parsed,
+    }
+
+    setHistory(prev => {
+      const next = [...prev, point]
+      return next.length > MAX_POINTS ? next.slice(-MAX_POINTS) : next
+    })
+  }, [data])
 
   return (
     <div className="card">
       <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 20 }}>
         <span style={{ fontSize: 18 }}>📊</span>
         <p style={{ fontSize: 16, fontWeight: 700, color: '#1a1a2e' }}>Variables ambientales</p>
+        {history.length === 0 && (
+          <span className="mono" style={{ fontSize: 10, color: '#9ca3af', marginLeft: 8 }}>
+            Esperando datos MQTT...
+          </span>
+        )}
       </div>
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 16 }}>
         {SENSORS.map(({ key, label, unit, color, icon }) => (
@@ -44,11 +67,11 @@ export default function SensorCharts() {
               {icon} {label} <span className="mono" style={{ fontSize: 10 }}>{unit}</span>
             </p>
             <ResponsiveContainer width="100%" height={160}>
-              <LineChart data={data}>
+              <LineChart data={history}>
                 <XAxis dataKey="t" tick={{ fill: '#d1d5db', fontSize: 8 }} axisLine={false} tickLine={false} />
                 <YAxis tick={{ fill: '#d1d5db', fontSize: 8 }} axisLine={false} tickLine={false} width={28} />
                 <Tooltip content={<CustomTooltip unit={unit} color={color} />} />
-                <Line type="monotone" dataKey={key} stroke={color} dot={false} strokeWidth={2.5} />
+                <Line type="monotone" dataKey={key} stroke={color} dot={false} strokeWidth={2.5} isAnimationActive={false} />
               </LineChart>
             </ResponsiveContainer>
           </div>
