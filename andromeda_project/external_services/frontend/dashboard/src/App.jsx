@@ -3,15 +3,14 @@ import Sidebar from './Sidebar'
 import SensorCards from './SensorCards'
 import SensorCharts from './SensorCharts'
 import CameraFeed from './CameraFeed'
-import MapPanel from './MapPanel'
 import { useMQTT } from './hooks/useMQTT'
 
 const SYSTEM_STATES = {
-  IDLE:      { label: 'EN ESPERA',  color: '#6b7280', bg: '#f9fafb' },
-  READY:     { label: 'LISTO',      color: '#22c55e', bg: '#f0fdf4' },
-  OPERATING: { label: 'OPERANDO',   color: '#6c63ff', bg: '#f5f3ff' },
-  RTH:       { label: 'RETORNO',    color: '#f59e0b', bg: '#fffbeb' },
-  ERROR:     { label: 'ERROR',      color: '#ef4444', bg: '#fef2f2' },
+  IDLE:      { label: 'EN ESPERA',  color: '#6b7280', bg: '#f9fafb',  bgDark: '#1f2937' },
+  READY:     { label: 'LISTO',      color: '#22c55e', bg: '#f0fdf4',  bgDark: '#052e16' },
+  OPERATING: { label: 'OPERANDO',   color: '#6c63ff', bg: '#f5f3ff',  bgDark: '#1e1b4b' },
+  RTH:       { label: 'RETORNO',    color: '#f59e0b', bg: '#fffbeb',  bgDark: '#1c1402' },
+  ERROR:     { label: 'ERROR',      color: '#ef4444', bg: '#fef2f2',  bgDark: '#2a0a0a' },
 }
 
 export default function App() {
@@ -19,38 +18,41 @@ export default function App() {
   const [navMode, setNavMode] = useState('Autónomo')
   const [systemState, setSystemState] = useState('IDLE')
   const [operating, setOperating] = useState(false)
+  const [dark, setDark] = useState(false)
 
-  // 🔌 MQTT
-  const { connected, sensorData, cameraStatus } = useMQTT()
+  const { connected, sensorData, cameraStatus, onFrameRef, onFrameRef2 } = useMQTT()
 
   const handleMission = () => {
-    if (!operating) {
-      setSystemState('OPERATING')
-      setOperating(true)
-    } else {
-      setSystemState('IDLE')
-      setOperating(false)
-    }
+    if (!operating) { setSystemState('OPERATING'); setOperating(true) }
+    else            { setSystemState('IDLE');      setOperating(false) }
   }
 
   const state = SYSTEM_STATES[systemState]
 
   return (
-    <div style={{ display: 'flex', minHeight: '100vh' }}>
+    <div className={dark ? 'dark' : ''} style={{ display: 'flex', minHeight: '100vh', background: 'var(--bg-main)' }}>
       <Sidebar active={active} setActive={setActive} navMode={navMode} setNavMode={setNavMode} />
+
       <main className="main">
+        {/* ── HEADER ── */}
         <div className="page-header">
           <div>
-            <h1 style={{ fontSize: 28, fontWeight: 800, color: '#1a1a2e', letterSpacing: -0.5 }}>
+            <h1 style={{ fontSize: 28, fontWeight: 800, color: 'var(--text-primary)', letterSpacing: -0.5 }}>
               👋 Bienvenido, Jean
             </h1>
-            <p className="mono" style={{ fontSize: 11, color: '#9ca3af', marginTop: 4 }}>
+            <p className="mono" style={{ fontSize: 11, color: 'var(--text-muted)', marginTop: 4 }}>
               ANDROMEDA USV — PANEL DE CONTROL
             </p>
           </div>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
 
-            {/* 🔌 Indicador MQTT */}
+          <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+            {/* Toggle dark/light */}
+            <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+              <span style={{ fontSize: 13, color: 'var(--text-muted)' }}>{dark ? '🌙' : '☀️'}</span>
+              <button className="theme-toggle" onClick={() => setDark(d => !d)} title="Cambiar tema" />
+            </div>
+
+            {/* MQTT */}
             <div style={{
               padding: '8px 16px', borderRadius: 12,
               background: connected ? '#f0fdf4' : '#fef2f2',
@@ -63,9 +65,11 @@ export default function App() {
               </span>
             </div>
 
+            {/* Estado sistema */}
             <div style={{
               padding: '8px 16px', borderRadius: 12,
-              background: state.bg, border: `1.5px solid ${state.color}33`,
+              background: dark ? state.bgDark : state.bg,
+              border: `1.5px solid ${state.color}33`,
               display: 'flex', alignItems: 'center', gap: 8
             }}>
               <span style={{ width: 8, height: 8, borderRadius: '50%', background: state.color }} />
@@ -73,10 +77,12 @@ export default function App() {
                 {state.label}
               </span>
             </div>
+
             <span className="badge">ROS2 HUMBLE</span>
           </div>
         </div>
 
+        {/* ── BANNER MISIÓN ── */}
         <div style={{
           background: 'linear-gradient(135deg, #6c63ff, #a855f7)',
           borderRadius: 16, padding: '20px 24px',
@@ -107,16 +113,12 @@ export default function App() {
           </button>
         </div>
 
-        {/* 🔽 sensorData y cameraStatus se pasan como props */}
+        {/* ── CONTENIDO ── */}
         <SensorCards data={sensorData} />
+
         <div style={{ display: 'grid', gridTemplateColumns: '1.2fr 1fr', gap: 24 }}>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
-            <SensorCharts data={sensorData} />
-            <MapPanel />
-          </div>
-          <div>
-            <CameraFeed status={cameraStatus} />
-          </div>
+          <SensorCharts data={sensorData} />
+          <CameraFeed onFrameRef={onFrameRef} onFrameRef2={onFrameRef2} />
         </div>
       </main>
     </div>

@@ -25,7 +25,6 @@ setup(
     entry_points={
         'console_scripts': [
             'sensor_node     = andromeda_middleware.nodes.sensor_node:main',
-            'camera_node     = andromeda_middleware.nodes.camera_node:main',
             'mqtt_bridge_node = andromeda_middleware.nodes.mqtt_bridge_node:main',  
         ],
     },

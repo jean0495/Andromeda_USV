@@ -4,9 +4,9 @@ import { useRef, useEffect, useState } from 'react'
 const MAX_POINTS = 30
 
 const SENSORS = [
-  { key: 'temp',  label: 'Temperatura', unit: '°C',  color: '#f97316', icon: '🌡' },
-  { key: 'ph',    label: 'pH',          unit: '',    color: '#6c63ff', icon: '⚗' },
-  { key: 'turb',  label: 'Turbidez',    unit: 'NTU', color: '#a855f7', icon: '💧' },
+  { key: 'temp', label: 'Temperatura', unit: '°C',  color: '#f97316', icon: '🌡' },
+  { key: 'hum',   label: 'pH',          unit: '',    color: '#6c63ff', icon: '⚗' },
+  { key: 'turb', label: 'Turbidez',    unit: 'NTU', color: '#a855f7', icon: '💧' },
 ]
 
 function parseSensorData(raw) {
@@ -23,8 +23,8 @@ const CustomTooltip = ({ active, payload, label, unit, color }) => {
   if (!active || !payload?.length) return null
   return (
     <div className="card" style={{ padding: '8px 12px', fontSize: 11 }}>
-      <p style={{ color: '#9ca3af' }}>{label}</p>
-      <p style={{ color, fontWeight: 600 }}>{payload[0].value} {unit}</p>
+      <p style={{ color: '#6b7280' }}>{label}</p>
+      <p style={{ color, fontWeight: 700 }}>{payload[0].value} {unit}</p>
     </div>
   )
 }
@@ -34,15 +34,10 @@ export default function SensorCharts({ data }) {
   const tickRef = useRef(0)
 
   useEffect(() => {
-    const parsed = parseSensorData(data)
+    const parsed = data
     if (!parsed) return
-
     tickRef.current += 1
-    const point = {
-      t: `${tickRef.current}s`,
-      ...parsed,
-    }
-
+    const point = { t: `${tickRef.current}s`, ...parsed }
     setHistory(prev => {
       const next = [...prev, point]
       return next.length > MAX_POINTS ? next.slice(-MAX_POINTS) : next
@@ -60,18 +55,36 @@ export default function SensorCharts({ data }) {
           </span>
         )}
       </div>
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 16 }}>
+
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
         {SENSORS.map(({ key, label, unit, color, icon }) => (
           <div key={key}>
-            <p style={{ fontSize: 12, color: '#9ca3af', marginBottom: 6, fontWeight: 500 }}>
-              {icon} {label} <span className="mono" style={{ fontSize: 10 }}>{unit}</span>
+            <p style={{ fontSize: 13, color: '#111827', marginBottom: 8, fontWeight: 700 }}>
+              {icon} {label} <span className="mono" style={{ fontSize: 11, color: '#374151', fontWeight: 600 }}>{unit}</span>
             </p>
-            <ResponsiveContainer width="100%" height={160}>
-              <LineChart data={history}>
-                <XAxis dataKey="t" tick={{ fill: '#d1d5db', fontSize: 8 }} axisLine={false} tickLine={false} />
-                <YAxis tick={{ fill: '#d1d5db', fontSize: 8 }} axisLine={false} tickLine={false} width={28} />
+            <ResponsiveContainer width="100%" height={120}>
+              <LineChart data={history} margin={{ top: 4, right: 8, left: 0, bottom: 0 }}>
+                <XAxis
+                  dataKey="t"
+                  tick={{ fill: '#9a9ca0', fontSize: 11, fontWeight: 700 }}
+                  axisLine={{ stroke: '#374151', strokeWidth: 1.5 }}
+                  tickLine={{ stroke: '#374151', strokeWidth: 1.5 }}
+                />
+                <YAxis
+                  tick={{ fill: '#9a9ca0', fontSize: 11, fontWeight: 700 }}
+                  axisLine={{ stroke: '#374151', strokeWidth: 1.5 }}
+                  tickLine={{ stroke: '#374151', strokeWidth: 1.5 }}
+                  width={36}
+                />
                 <Tooltip content={<CustomTooltip unit={unit} color={color} />} />
-                <Line type="monotone" dataKey={key} stroke={color} dot={false} strokeWidth={2.5} isAnimationActive={false} />
+                <Line
+                  type="monotone"
+                  dataKey={key}
+                  stroke={color}
+                  dot={false}
+                  strokeWidth={2.5}
+                  isAnimationActive={false}
+                />
               </LineChart>
             </ResponsiveContainer>
           </div>
